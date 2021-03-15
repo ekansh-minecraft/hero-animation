@@ -22,7 +22,7 @@ class Fly
 
         var sprImage
 
-        sprImage = loadImage("images/Superhero-01.png")
+        sprImage = loadImage("Superhero-01.png")
         this.sprite = createSprite(x, y, r, r)
         this.sprite.addImage("superhero", sprImage)
         this.sprite.scale = 0.15

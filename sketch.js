@@ -47,7 +47,7 @@ var monster;
 function preload() {
 //preload the images here
 
-GamingBackgroundImage = loadImage("images/GamingBackground.png")
+GamingBackgroundImage = loadImage("GamingBackground.png")
 
 
 

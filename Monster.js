@@ -18,7 +18,7 @@ class Monster
      this.body = Bodies.circle(this.x,this.y,this.r,options);
      World.add(world,this.body)
 
-     this.image=loadImage("images/Monster-01.png")
+     this.image=loadImage("Monster-01.png")
      this.sprite = createSprite(x,y,3*r,r)
      this.sprite.addImage("monster", this.image)
      this.sprite.scale = 0.10
