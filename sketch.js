@@ -2,7 +2,7 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
-const Constraitnts = Matter.Constraitnts;
+const Constraint = Matter.Constraint;
 
 var ground;
 var GamingBackgroundImage;
@@ -37,6 +37,8 @@ var block25;
 var block26;
 
 var superman;
+var chain;
+var monster;
 
 
 
@@ -61,48 +63,46 @@ function setup() {
    
   ground = new Ground(0,600,1564,20)
 
-  block1 = new Block(350,570,30,40)
-  block2 = new Block(350,530,30,40)
-  block3 = new Block(350,490,30,40)
-  block4 = new Block(350,450,30,40)
-  block5 = new Block(350,410,30,40)
-  block6 = new Block(350,370,30,40)
-  block7 = new Block(350,330,30,40)
+  block1 = new Block(480,570,30,40)
+  block2 = new Block(480,530,30,40)
+  block3 = new Block(480,490,30,40)
+  block4 = new Block(480,450,30,40)
+  block5 = new Block(480,410,30,40)
+  block6 = new Block(480,370,30,40)
+  block7 = new Block(480,330,30,40)
 
-  block8 = new Block(390,570,30,40)
-  block9 = new Block(390,530,30,40)
-  block10 = new Block(390,490,30,40)
-  block11 = new Block(390,450,30,40)
-  block12 = new Block(390,410,30,40)
-  block13 = new Block(390,370,30,40)
+  block8 = new Block(520,570,30,40)
+  block9 = new Block(520,530,30,40)
+  block10 = new Block(520,490,30,40)
+  block11 = new Block(520,450,30,40)
+  block12 = new Block(520,410,30,40)
+  block13 = new Block(520,370,30,40)
  
-  block14 = new Block(430,570,30,40)
-  block15 = new Block(430,530,30,40)
-  block16 = new Block(430,490,30,40)
-  block17 = new Block(430,450,30,40)
-  block18 = new Block(430,410,30,40)
-  block19 = new Block(430,370,30,40)
-  block20 = new Block(430,330,30,40)
-  block21 = new Block(430,290,30,40)
+  block14 = new Block(560,570,30,40)
+  block15 = new Block(560,530,30,40)
+  block16 = new Block(560,490,30,40)
+  block17 = new Block(560,450,30,40)
+  block18 = new Block(560,410,30,40)
+  block19 = new Block(560,370,30,40)
+  block20 = new Block(560,330,30,40)
+  block21 = new Block(560,290,30,40)
 
-  block22 = new Block(470,570,30,40)
-  block23 = new Block(470,530,30,40)
-  block24 = new Block(470,490,30,40)
-  block25 = new Block(470,450,30,40)
-  block26 = new Block(470,410,30,40)
+  block22 = new Block(600,570,30,40)
+  block23 = new Block(600,530,30,40)
+  block24 = new Block(600,490,30,40)
+  block25 = new Block(600,450,30,40)
+  block26 = new Block(600,410,30,40)
 
-  superman = new Fly(250,530,20)
-
-  
- 
-  
-
-
+  superman = new Fly(300,450,50)
+  monster = new Monster(830,410,20,20)
+  chain = new Slingshot(superman.body,{x:80,y:480})
 
 
 }
 
 function draw() {
+  Engine.update(engine)
+
   background(GamingBackgroundImage);
 
   ground.display();
@@ -132,14 +132,21 @@ function draw() {
   block24.display();
   block25.display();
   block26.display();
+  monster.display()
 
   superman.display();
-
-
-
 }
+
 function mouseDragged()
 {
-  Matter.body.setPosition(hero.body, { x: mouseX, y:mouseY});
+  console.log("mouseDragged has been called - " + superman.body)
+  Matter.Body.setPosition(superman.body, { x: mouseX, y:mouseY});
 }
 
+function mouseReleased()
+{
+   console.log("mouseReallesed")
+
+  chain.fly()
+  
+}

@@ -6,10 +6,7 @@ class Monster
    {
 
      var options = {
-
-       isStatic:true
-
-
+       isStatic:false
      }
 
 
@@ -17,25 +14,36 @@ class Monster
       this.y = y;
       this.r = r;
 
-     this.image=loadImage("Monster-01.png")
+     
      this.body = Bodies.circle(this.x,this.y,this.r,options);
      World.add(world,this.body)
+
+     this.image=loadImage("images/Monster-01.png")
+     this.sprite = createSprite(x,y,3*r,r)
+     this.sprite.addImage("monster", this.image)
+     this.sprite.scale = 0.10
 
    }
    display()
    {
-    pos = this.body.position;
-    var angle = this.body.angle;
 
-    push();
-    translate(pos.x,pos.y);
-    rotate(angle);
-    ellipseMode(RANDOM)
-    strokeWeight(4);
-    stroke("black");
-    fill("red");
-    ellipse(this.x,this.y,this.r)
-    pop(); 
+    this.sprite.x = this.body.position.x;
+    this.sprite.y = this.body.position.y;
+
+    rectMode(CENTER)
+    
+
+    // push();
+    // translate(pos.x,pos.y);
+    // rotate(angle);
+    // ellipseMode(RANDOM)
+    // strokeWeight(4);
+    // stroke("black");
+    // fill("red");
+    // ellipse(this.x,this.y,this.r)
+    // pop(); 
+
+    drawSprites()
    }
 
 
